@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Result</title>
+    <link rel="stylesheet" href="navbar.css">
+    <style>
+    
+          #itemData{
+            width:40%;
+            margin: auto;
+            padding:8px;
+            border:0.5px solid grey;
+            margin-top: 30px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+
+    </div>
+
+    <div id="searchItem">
+
+    </div>
+    
+</body>
+</html>
+
+<script type="module">
+    
+    import navbar from "./components/navbar.js";
+    
+
+    import { getData,append } from "./scripts/append&fetch.js";
+
+
+    let container=document.getElementById("navbar");
+    container.innerHTML=navbar();
+
+    let container2=document.getElementById("searchItem");
+
+
+  let x=JSON.parse(localStorage.getItem("data"));
+  console.log(x)
+
+  append(x,container2);
+
+
+
+
+
+</script>

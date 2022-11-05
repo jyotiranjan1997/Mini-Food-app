@@ -1,0 +1,44 @@
+#subNavbar{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: 0.5px solid grey;
+}
+#sign{
+    width:60%;
+    display: flex;
+    justify-content: space-between;
+    gap:20px;
+
+}
+#home{
+    width:4%;
+}
+#recipe{
+    padding:5px;
+    border-radius: 5px;
+    border: 0.5px solid grey;
+
+}
+button{
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 0.5px solid grey;
+}
+#sign>div{
+display: flex;
+justify-content: center;
+align-items: center;
+gap:10px
+}
+
+body{
+    background-color: rgb(17, 17, 17);
+}
+#logo{
+    width:80%;
+    border-radius: 30px;
+}

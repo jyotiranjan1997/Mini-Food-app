@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meals of the Day</title>
+    <link rel="stylesheet" href="navbar.css">
+    <style>
+        #itemData{
+            width:40%;
+            margin: auto;
+            padding:8px;
+            border:0.5px solid grey;
+            margin-top: 30px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbar">
+
+    </div>
+
+    <div id="day">
+
+    </div>
+    
+</body>
+</html>
+
+<script type="module">
+ 
+    import navbar from "./components/navbar.js";
+    import { getData, append} from "./scripts/append&fetch.js";
+
+    document.getElementById("navbar").innerHTML=navbar();
+       let url="https://www.themealdb.com/api/json/v1/1/random.php";
+       let contain =document.querySelector("#day");
+       async function main(){
+           let data=await getData(url);
+           append(data.meals,contain);
+           console.log(data.meals)
+       }
+
+    main();
+   // https://www.themealdb.com/api/json/v1/1/random.php
+</script>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" href="navbar.css">
+    <style>
+       
+        #recipe{
+            width:100%;
+            padding:5px;
+            border-radius: 5px;
+            border: 0.5px solid grey;
+
+        }
+       
+   
+    #search2{
+        width:30%;
+        margin: auto;
+        margin-top: 20px;
+
+    }
+    #items{
+        width:95%;
+        margin: auto;
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap:20px;
+        
+    }
+    #itemData{
+        padding:5px;
+        border-radius: 8px;
+        border: 0.4px solid greenyellow;
+
+    }
+    
+   
+
+    </style>
+</head>
+<body>
+    <div id="navbar">
+
+    </div>
+
+    <div id="search2">
+        <input type="text" placeholder="Search reciepes" id="recipe">
+        <div id="box">
+
+        </div>
+    </div>
+
+    <div id="items">
+
+    </div>
+    
+</body>
+</html>
+
+<script type="module">
+let id;
+
+    import navbar from "./components/navbar.js";
+   
+    import {getData, append,append2} from "./scripts/append&fetch.js";
+    
+    let Navbar=document.getElementById("navbar");
+
+    Navbar.innerHTML=navbar();
+    
+   let container=document.getElementById("items");
+   
+    let x=JSON.parse(localStorage.getItem("flag"))|| false;
+
+
+
+
+   async function main(){
+    if(x==false){
+        alert("Please login first");
+        window.location.href="signup.html";
+    }else{
+        let query=document.getElementById("recipe").value;
+
+let url=`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`;
+ let data= await getData(url);
+ append2(data.meals,container);
+    }
+    
+    
+   }
+
+    let name=document.getElementById("recipe");
+    name.addEventListener("input",function(){
+        debouncing(main,1000);
+    });
+
+
+
+
+  function debouncing(main,delay){
+    if(id){
+        clearTimeout(id);
+    }
+
+    id=setTimeout(function(){
+        main();
+    },delay)
+  }
+
+   
+    
+
+    
+</script>
